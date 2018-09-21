@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <!-- type为实体类User，包名已经配置，可以直接写类名 -->
+    <resultMap id="User" type="com.example.demo.entity.User">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="age" column="age" />
+    </resultMap>
+
+    <select id="likeName" parameterType="java.lang.String" resultType="com.example.demo.entity.User">
+        SELECT *
+        FROM user_info
+        WHERE name LIKE CONCAT('%',#{name},'%')
+    </select>
+
+    <insert id="saveUser" parameterType="com.example.demo.entity.User">
+        insert into user_info(name, age) values(#{name}, #{age})
+    </insert>
+	
+	<select id="getById" parameterType="java.lang.String" resultMap="User">
+        SELECT *
+        FROM user_info
+        WHERE ID = #{id}
+    </select>
+
+</mapper> 

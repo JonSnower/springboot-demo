@@ -1,0 +1,10 @@
+CREATE TABLE user_info
+(
+id int not null PRIMARY KEY AUTO_INCREMENT,
+name varchar(255),
+age int,
+address varchar(255)
+)
+
+
+
